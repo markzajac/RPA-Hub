@@ -1,0 +1,51 @@
+{
+  "Name": "BookBub",
+  "CreationDate": "2020-11-3",
+  "Commands": [
+    {
+      "Command": "open",
+      "Target": "https://www.bookbub.com/ebook-deals/latest?page=${!loop}",
+      "Value": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"latest-deals\"]/div/div/div[2]",
+      "Value": "!csvLine"
+    },
+    {
+      "Command": "csvSave",
+      "Target": "latest_deals",
+      "Value": ""
+    },
+    {
+      "Command": "store",
+      "Target": "2",
+      "Value": "x"
+    },
+    {
+      "Command": "while_v2",
+      "Target": "(${x}<= 27)",
+      "Value": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"latest-deals\"]/div[${x}]/div/div[2]",
+      "Value": "!csvLine"
+    },
+    {
+      "Command": "csvSave",
+      "Target": "latest_deals",
+      "Value": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Number (${x}) +1",
+      "Value": "x"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": ""
+    }
+  ]
+}
